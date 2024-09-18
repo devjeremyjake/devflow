@@ -14,7 +14,7 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 const ThemeProvider = ({ children }: PropsWithChildren) => {
-	const [mode, setMode] = useState('');
+	const [mode, setMode] = useState('dark');
 	const handleThemeChange = () => {
 		if (mode === 'dark') {
 			setMode('light');
