@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface MetricProp {
 	imageUrl: string;
@@ -19,8 +20,8 @@ const Metric = ({
 	textStyles,
 	isAuthor,
 }: MetricProp) => {
-	return (
-		<div className="flex-center flex-wrap gap-1 cursor-pointer">
+	const metricContent = (
+		<>
 			<Image
 				src={imageUrl}
 				alt={alt}
@@ -36,8 +37,18 @@ const Metric = ({
 					{title}
 				</span>
 			</p>
-		</div>
+		</>
 	);
+
+	if (href) {
+		return (
+			<Link href={href} className="flex-center gap-1 cursor-pointer">
+				{metricContent}
+			</Link>
+		);
+	}
+
+	return <div className="flex-center flex-wrap gap-1">{metricContent}</div>;
 };
 
 export default Metric;
