@@ -19,12 +19,19 @@ import { Input } from '@/components/ui/input';
 import { createQuestion } from '@/lib/actions/question.action';
 import { QuestionsSchema } from '@/lib/validations';
 import Image from 'next/image';
+import { usePathname, useRouter } from 'next/navigation';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
 
 const type: string = 'create';
 
-const Question = () => {
+interface Props {
+	mongoUserId: string;
+}
+
+const Question = ({ mongoUserId }: Props) => {
+	const router = useRouter();
+	const pathname = usePathname();
 	const editorRef = useRef(null);
 	const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
@@ -73,8 +80,16 @@ const Question = () => {
 	async function onSubmit(values: z.infer<typeof QuestionsSchema>) {
 		setIsSubmitting(true);
 		try {
-			await createQuestion({});
-			console.log(values);
+			await createQuestion({
+				title: values?.title,
+				content: values?.explanation,
+				tags: values?.tags,
+				author: JSON.parse(mongoUserId),
+				path: pathname,
+			});
+
+			// Navigate to the home page
+			router.push('/');
 		} catch (error) {
 		} finally {
 			setIsSubmitting(false);

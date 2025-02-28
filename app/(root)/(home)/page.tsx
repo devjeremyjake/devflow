@@ -5,6 +5,7 @@ import NoResult from '@/components/shared/NoResult';
 import LocalSearchbar from '@/components/shared/search/LocalSearchbar';
 import { Button } from '@/components/ui/button';
 import { HomePageFilters } from '@/constants/filters';
+import { getQuestions } from '@/lib/actions/question.action';
 import Link from 'next/link';
 
 const questions = [
@@ -101,7 +102,9 @@ const questions = [
 	},
 ];
 
-const Home = () => {
+const Home = async () => {
+	const result = await getQuestions({});
+	console.log('Questions', result?.questions);
 	return (
 		<div>
 			<div className="flex w-full flex-col-reverse justify-between sm:flex-row gap-4 sm:items-center">
@@ -129,8 +132,8 @@ const Home = () => {
 			</div>
 			<HomeFilters />
 			<div className="mt-10 flex w-full flex-col gap-6">
-				{questions?.length > 0 ? (
-					questions?.map((question) => (
+				{result?.questions?.length > 0 ? (
+					result?.questions?.map((question) => (
 						<QuestionsCard
 							key={question?._id}
 							_id={question?._id}
