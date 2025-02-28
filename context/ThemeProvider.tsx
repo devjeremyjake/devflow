@@ -43,7 +43,7 @@ export default ThemeProvider;
 export function useTheme() {
 	const context = useContext(ThemeContext);
 	if (context === undefined) {
-		throw new Error('useThemem ust be used within a ThemeProvider');
+		throw new Error('useTheme must be used within a ThemeProvider');
 	}
 	return context;
 }

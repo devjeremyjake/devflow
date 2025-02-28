@@ -12,29 +12,34 @@ const hotQuestion = [
 
 const popularTags = [
 	{
-		_id: 1,
+		_id: '1',
 		name: 'Javascript',
 		totalQuestions: 5,
+		showCount: true,
 	},
 	{
-		_id: 2,
+		_id: '2',
 		name: 'Typescript',
 		totalQuestions: 1,
+		showCount: true,
 	},
 	{
-		_id: 3,
+		_id: '3',
 		name: 'React',
 		totalQuestions: 7,
+		showCount: true,
 	},
 	{
-		_id: 4,
+		_id: '4',
 		name: 'NextJs',
 		totalQuestions: 2,
+		showCount: true,
 	},
 	{
-		_id: 5,
+		_id: '5',
 		name: 'VueJs',
 		totalQuestions: 5,
+		showCount: true,
 	},
 ];
 
@@ -44,7 +49,7 @@ const RightsideBar = () => {
 			className="bckground-light900_dark200 light-border 
         sticky right-0 top-0 flex h-screen flex-col overflow-y-auto
         border-1 p-6 pt-36 shadow-light-300 dark:shadow-none max-sm:hidden 
-        w-[350px] max-xl:hidden custom-scrollbar"
+        w-[350px] max-xl:hidden no-scrollbar"
 		>
 			<div>
 				<h3 className="h3-bold text-dark200_light900">Top Questions</h3>

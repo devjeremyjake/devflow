@@ -5,6 +5,12 @@ export interface SidebarLink {
 	label: string;
 }
 
+export interface Author {
+	_id: string;
+	name: string;
+	picture: string;
+}
+
 export interface Job {
 	id?: string;
 	employer_name?: string;
