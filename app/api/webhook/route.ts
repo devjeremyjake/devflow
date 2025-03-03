@@ -38,7 +38,6 @@ export async function POST(req) {
 	const svixIdTimeStamp = headerPayload.get('svix-timestamp');
 	const svixSignature = headerPayload.get('svix-signature');
 	if (!svixId || !svixIdTimeStamp || !svixSignature) {
-		console.log('svixId', svixId);
 		console.log('svixIdTimeStamp', svixIdTimeStamp);
 		console.log('svixSignature', svixSignature);
 		return new Response('Error occured', {
