@@ -28,7 +28,7 @@ interface UserInterface extends Omit<User, UnwantedKeys> {
 	}[];
 }
 
-const webhookSecret: string = process.env.WEBHOOK_SECRET || '';
+const webhookSecret: string = process.env.NEXT_CLERK_WEBHOOK_SECRET || '';
 
 export async function POST(req) {
 	const payload = await req.json();
